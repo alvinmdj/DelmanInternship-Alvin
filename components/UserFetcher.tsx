@@ -18,7 +18,6 @@ interface UserProps {
 }
 
 const UserFetcher = () => {
-  const [isLoaded, setIsLoaded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [userData, setUserData] = useState<UserProps[]>([])
 
@@ -26,7 +25,6 @@ const UserFetcher = () => {
     setIsLoading(true)
     const userData = await fetch('https://randomuser.me/api')
     const data = await userData.json()
-    setIsLoaded(true)
     setIsLoading(false)
     setUserData(data.results)
   }
@@ -71,7 +69,7 @@ const UserFetcher = () => {
             </Flex>
           </Flex>
         ) : (
-          <SkeletonText isLoaded={isLoaded} noOfLines={8} spacing="2" />
+          <SkeletonText isLoaded={userData.length > 0} noOfLines={8} spacing="2" />
         )}
       </Box>
       <Divider />
