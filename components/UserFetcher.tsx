@@ -29,7 +29,6 @@ const UserFetcher = () => {
     setIsLoaded(true)
     setIsLoading(false)
     setUserData(data.results)
-    console.log(data.results)
   }
 
   const setBorderColor = () => {
