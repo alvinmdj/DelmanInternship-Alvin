@@ -9,7 +9,11 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
-const Navbar = () => {
+interface NavbarProps {
+  current?: 'change-title' | 'fetching'
+}
+
+const Navbar = ({ current }: NavbarProps) => {
   return (
     <HStack>
       <Center height="50px" gap="1rem">
@@ -19,8 +23,20 @@ const Navbar = () => {
         <Divider orientation="vertical" height="2rem" />
         <Breadcrumb>
           <BreadcrumbItem>
-            <BreadcrumbLink as={NextLink} href="/">Internship Program</BreadcrumbLink>
+            <NextLink href='/'>
+              <BreadcrumbLink>Internship Program</BreadcrumbLink>
+            </NextLink>
           </BreadcrumbItem>
+          {current === 'change-title' && (
+            <BreadcrumbItem>
+              <span>Title Transformer</span>
+            </BreadcrumbItem>
+          )}
+          {current === 'fetching' && (
+            <BreadcrumbItem>
+              <span>User Fetcher</span>
+            </BreadcrumbItem>
+          )}
         </Breadcrumb>
       </Center>
     </HStack>

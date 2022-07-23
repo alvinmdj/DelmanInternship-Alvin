@@ -8,7 +8,7 @@ interface MetatagsProps {
 const Metatags = ({ title, desc }: MetatagsProps) => {
   return (
     <Head>
-      <title>delman.io | {title}</title>
+      <title>{`delman.io | ${title}`}</title>
       <meta name="description" content={desc} />
       <link rel="icon" href="/favicon.ico" />
     </Head>
